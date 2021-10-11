@@ -1,0 +1,89 @@
+{
+		"customDb": "discography",
+		"loadImmediately": true,
+		"table": {
+			"schema": "discography",
+			"name": "albums",
+			"ordering": "albums.title",
+			"joins": [
+				{
+					"joinType": "INNER",
+					"joinTable": "discography.artists",
+					"joinCondition": "albums.artist_id = artists.id"
+				},
+				{
+					"joinType": "INNER",
+					"joinTable": "discography.musical_genres",
+					"joinCondition": "albums.genre_id = musical_genres.id"
+				}
+			],
+			"fkCombos": [
+				{
+					"columnName": "artist_id",
+					"schema": "discography",
+					"table": "artists",
+					"key": "id",
+					"description": "name",
+					"autocomplete": true
+				},
+				{
+					"columnName": "genre_id",
+					"schema": "discography",
+					"table": "musical_genres",
+					"key": "id",
+					"description": "description",
+					"autocomplete": false
+				}
+			],
+			"columns": [
+				{
+					"name": "artist_id",
+					"label": "Artist",
+					"type": "FKCOMBO",
+					"notShownInTable": true
+				},
+				{
+					"name": "name",
+					"joinTable": "artists",
+					"label": "Artist"
+				},
+				{
+					"name": "genre_id",
+					"label": "Genre",
+					"type": "FKCOMBO",
+					"notShownInTable": true
+				},
+				{
+					"name": "description",
+					"joinTable": "musical_genres",
+					"label": "Genre"
+				},
+				{
+					"name": "id",
+					"label": "Id",
+					"primaryKey": false,
+					"readOnly": true,
+					"notShownInTable": true
+				},
+				{
+					"name": "release_date",
+					"label": "Release date",
+					"type": "DATE"
+				},
+				{
+					"name": "release_year",
+					"label": "Release year",
+					"notShownInTable": true
+				},
+				{
+					"name": "funct_release_date",
+					"function": "case when release_date is not null then to_char(release_date, 'yyyy') else cast(release_year as text) end",
+					"label": "Release year"
+				},
+				{
+					"name": "title",
+					"label": "Title"
+				}
+			]
+		}
+}

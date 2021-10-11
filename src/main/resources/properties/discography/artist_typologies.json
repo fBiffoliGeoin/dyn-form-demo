@@ -1,0 +1,21 @@
+{
+		"customDb": "discography",
+		"loadImmediately": true,
+		"table": {
+			"schema": "discography",
+			"name": "artist_typologies",
+			"ordering": "description",
+			"columns": [
+				{
+					"name": "id",
+					"label": "Id",
+					"primaryKey": false,
+					"readOnly": true
+				},
+				{
+					"name": "description",
+					"label": "Typology"
+				}
+			]
+		}
+}

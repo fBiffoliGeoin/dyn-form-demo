@@ -1,0 +1,61 @@
+{
+		"loadImmediately": true,
+		"forceReloadMenu": true,
+		"table": {
+			"schema": "menu",
+			"name": "menu_categories",
+			"ordering": "menu_types.description, menu_categories.sequence",
+			"joins": [
+				{
+					"joinType": "INNER",
+					"joinTable": "menu.menu_types",
+					"joinCondition": "menu.menu_categories.type_id = menu.menu_types.id"
+				}
+			],
+			"fkCombos": [
+				{
+					"columnName": "type_id",
+					"schema": "menu",
+					"table": "menu_types",
+					"key": "id",
+					"description": "description",
+					"autocomplete": true
+				}
+			],
+			"columns": [
+				{
+					"name": "type_id",
+					"label": "Type",
+					"type": "FKCOMBO",
+					"notShownInTable": true
+				},
+				{
+					"name": "description",
+					"joinTable": "menu.menu_types",
+					"label": "Type"
+				},			
+				{
+					"name": "id",
+					"label": "Id",
+					"primaryKey": false,
+					"readOnly": true
+				},
+				{
+					"name": "sequence",
+					"label": "Sequence"
+				},
+				{
+					"name": "visible_to_all",
+					"label": "Visible to all"
+				},
+				{
+					"name": "description",
+					"label": "Description"
+				},
+				{
+					"name": "read_only",
+					"label": "Read only"
+				}
+			]
+		}
+}

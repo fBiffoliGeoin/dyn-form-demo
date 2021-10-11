@@ -1,0 +1,40 @@
+{
+		"loadImmediately": true,
+		"readOnly": true,
+		"table": {
+			"schema": "errors",
+			"name": "errors",
+			"ordering": "errors_detail.dt_date desc",
+			"joins": [
+				{
+					"joinType": "INNER",
+					"joinTable": "errors.errors_detail",
+					"joinCondition": "errors_detail.error_id = errors.id"
+				}
+			],
+			"columns": [
+				{
+					"name": "dt_date",
+					"joinTable": "errors.errors_detail",
+					"label": "Date"
+				},
+				{
+					"name": "client_ip",
+					"joinTable": "errors.errors_detail",
+					"label": "Server/Client ip",
+					"forceSearch": true
+				},			
+				{
+					"name": "text",
+					"label": "Error message"
+				},
+				{
+					"name": "stacktrace",
+					"label": "Stacktrace",
+					"type": "TEXT_AREA",
+					"notShownInTable": true,
+					"disableSearch": true
+				}
+			]
+		}
+}

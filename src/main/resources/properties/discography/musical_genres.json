@@ -1,0 +1,21 @@
+{
+		"customDb": "discography",
+		"loadImmediately": true,
+		"table": {
+			"schema": "discography",
+			"name": "musical_genres",
+			"ordering": "description",
+			"columns": [
+				{
+					"name": "id",
+					"label": "Id",
+					"primaryKey": false,
+					"readOnly": true
+				},
+				{
+					"name": "description",
+					"label": "Genre"
+				}
+			]
+		}
+}

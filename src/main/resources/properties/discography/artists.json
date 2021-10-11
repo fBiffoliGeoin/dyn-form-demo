@@ -1,0 +1,49 @@
+{
+		"customDb": "discography",
+		"loadImmediately": true,
+		"table": {
+			"schema": "discography",
+			"name": "artists",
+			"ordering": "artists.name",
+			"joins": [
+				{
+					"joinType": "INNER",
+					"joinTable": "discography.artist_typologies",
+					"joinCondition": "artists.typology_id = artist_typologies.id"
+				}
+			],
+			"fkCombos": [
+				{
+					"columnName": "typology_id",
+					"schema": "discography",
+					"table": "artist_typologies",
+					"key": "id",
+					"description": "description",
+					"autocomplete": false
+				}
+			],
+			"columns": [
+				{
+					"name": "typology_id",
+					"label": "Typology",
+					"type": "FKCOMBO",
+					"notShownInTable": true
+				},
+				{
+					"name": "description",
+					"joinTable": "artist_typologies",
+					"label": "Typology"
+				},			
+				{
+					"name": "id",
+					"label": "Id",
+					"primaryKey": false,
+					"readOnly": true
+				},
+				{
+					"name": "name",
+					"label": "Name"
+				}
+			]
+		}
+}

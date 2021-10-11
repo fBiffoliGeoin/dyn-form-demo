@@ -1,0 +1,52 @@
+{
+	"loadImmediately": true,
+	"table": {
+		"schema": "menu",
+		"name": "environments",
+		"ordering": "custom_db.description, environments.description",
+		"joins": [
+				{
+					"joinType": "INNER",
+					"joinTable": "menu.custom_db",
+					"joinCondition": "environments.cust_id = custom_db.id"
+				}
+		],
+		"fkCombos": [
+				{
+					"columnName": "cust_id",
+					"schema": "menu",
+					"table": "custom_db",
+					"key": "id",
+					"description": "code"
+				}
+			],
+		"columns": [
+			{
+				"name": "id",
+				"label": "Id",
+				"primaryKey": false,
+				"readOnly": true
+			},
+			{
+				"name": "cust_id",
+				"label": "DB",
+				"type": "FKCOMBO",
+				"notShownInTable": true
+			},
+			{
+				"name": "description",
+				"joinTable": "custom_db",
+				"label": "DB",
+				"disableSearch": true
+			},
+			{
+				"name": "description",
+				"label": "Environment"
+			},
+			{
+				"name": "code",
+				"label": "Code"
+			}
+		]
+	}
+}

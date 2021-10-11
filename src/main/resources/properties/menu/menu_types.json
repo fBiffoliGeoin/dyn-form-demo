@@ -1,0 +1,26 @@
+{
+	"queryType": "jpa",
+	"loadImmediately": true,
+	"forceReloadMenu": true,
+	"table": {
+		"schema": "menu",
+		"name": "menu_types",
+		"ordering": "description",
+		"columns": [
+			{
+				"name": "id",
+				"label": "Id",
+				"primaryKey": false,
+				"readOnly": true
+			},
+			{
+				"name": "description",
+				"label": "Type"
+			},
+			{
+				"name": "general_path",
+				"label": "Path"
+			}
+		]
+	}
+}

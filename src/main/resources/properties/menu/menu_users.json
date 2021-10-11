@@ -1,0 +1,62 @@
+{
+		"loadImmediately": true,
+		"forceReloadMenu": true,
+		"table": {
+			"schema": "menu",
+			"name": "menu_users",
+			"ordering": "menu_users.user_name",
+			"joins": [
+				{
+					"joinType": "INNER",
+					"joinTable": "menu.menu_categories",
+					"joinCondition": "menu_users.category_id = menu_categories.id"
+				},
+				{
+					"joinType": "INNER",
+					"joinTable": "menu.menu_types",
+					"joinCondition": "menu_categories.type_id = menu_types.id"
+				}
+			],
+			"fkCombos": [
+				{
+					"columnName": "category_id",
+					"schema": "menu",
+					"table": "menu_categories",
+					"joinTables": "menu.menu_types",
+					"condition": "menu_categories.type_id = menu_types.id",
+					"key": "menu_categories.id",
+					"description": "menu_types.description || ' - ' || menu_categories.sequence || ' - ' || menu_categories.description",
+					"ordering": "menu_types.description,menu_categories.sequence"
+				}
+			],
+			"columns": [
+				{
+					"name": "id",
+					"label": "Id",
+					"primaryKey": false,
+					"readOnly": true
+				},
+				{
+					"name": "description",
+					"joinTable": "menu_types",
+					"label": "Type",
+					"disableSearch": true
+				},
+				{
+					"name": "category_id",
+					"label": "Menu",
+					"type": "FKCOMBO",
+					"notShownInTable": true
+				},
+				{
+					"name": "description",
+					"joinTable": "menu_categories",
+					"label": "Menu",
+					"disableSearch": true
+				},
+				{
+					"name": "user_name",
+					"label": "Username"
+				}			]
+		}
+}
