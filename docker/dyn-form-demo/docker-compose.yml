@@ -15,11 +15,11 @@ services:
          - POSTGRES_DB=testdb
     restart: unless-stopped
 
-  dyn-form-demo:
+  dyn-form-be:
     build:
       context: ../..
 
-    container_name: dyn-form-demo
+    container_name: dyn-form-be
     expose:
       - "8080"
     ports:
@@ -35,7 +35,7 @@ services:
     ports:
       - "3000:80"
     depends_on:
-      - dyn-form-demo
+      - dyn-form-be
       
 volumes:
   postgres-data:
