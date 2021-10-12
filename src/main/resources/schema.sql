@@ -4,7 +4,9 @@ drop table if exists menu.menu_users;
 drop table if exists menu.menu_tables;
 drop table if exists menu.menu_categories;
 drop table if exists menu.menu_types;
+-- drop index if exists cust_fk1; 
 drop table if exists menu.environments;
+drop table if exists menu.custom_db;
 
 
 CREATE TABLE if not exists menu.menu_types
@@ -100,4 +102,52 @@ CREATE TABLE if not exists menu.environments
 );
 
 alter table menu.custom_db add default_env_id int;
-alter table menu.custom_db add CONSTRAINT cust_fk1 FOREIGN KEY (default_env_id) REFERENCES menu.environments(id);
+-- alter table menu.custom_db add CONSTRAINT cust_fk1 FOREIGN KEY (default_env_id) REFERENCES menu.environments(id);
+
+
+create schema if not exists discography;
+
+drop table if exists discography.artist_typologies;
+drop table if exists discography.musical_genres;
+drop table if exists discography.artists;
+drop table if exists discography.albums;
+
+
+CREATE TABLE if not exists discography.artist_typologies
+(
+  id serial NOT NULL,
+  description varchar(255) NOT NULL,
+  CONSTRAINT arty_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE if not exists discography.musical_genres
+(
+  id serial NOT NULL,
+  description varchar(255) NOT NULL,
+  CONSTRAINT muge_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE if not exists discography.artists
+(
+  id serial NOT NULL,
+  typology_id int not null,
+  name varchar(255) NOT NULL,
+  CONSTRAINT arti_pk PRIMARY KEY (id),
+  CONSTRAINT arti_fk1 FOREIGN KEY (typology_id)
+      REFERENCES discography.artist_typologies (id)
+);
+
+CREATE TABLE if not exists discography.albums
+(
+  id serial NOT NULL,
+  artist_id int not null,
+  genre_id int not null,
+  release_date date,
+  release_year int,
+  title varchar(255) NOT NULL,
+  CONSTRAINT albu_pk PRIMARY KEY (id),
+  CONSTRAINT albu_fk1 FOREIGN KEY (artist_id)
+      REFERENCES discography.artists (id),
+  CONSTRAINT albu_fk2 FOREIGN KEY (genre_id)
+      REFERENCES discography.musical_genres (id)
+);

@@ -1,6 +1,6 @@
 FROM fabiobiffoli/dyn-form-be-core as builder
 WORKDIR /usr/src/app
-COPY pom.xml /usr/src/app
+COPY pom-docker.xml /usr/src/app/pom.xml
 COPY src/ /usr/src/app/src/
 #RUN mvn clean -P docker install
 RUN mvn clean -P docker package spring-boot:repackage
