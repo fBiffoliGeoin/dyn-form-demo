@@ -1,6 +1,6 @@
 build:
   docker:
-    dyn-form: Dockerfile
+    web: Dockerfile
 
 run:
-  dyn-form: java -jar jars/dyn-form.jar
+  web: java -jar jars/dyn-form.jar
