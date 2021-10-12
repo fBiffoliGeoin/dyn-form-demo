@@ -1,3 +1,6 @@
 build:
   docker:
     dyn-form: Dockerfile
+
+run:
+  web: java -jar jars/dyn-form.jar
