@@ -3,4 +3,4 @@ build:
     web: Dockerfile
 
 run:
-  web: java -jar jars/dyn-form.jar
+  web:java -jar jars/dyn-form.jar
