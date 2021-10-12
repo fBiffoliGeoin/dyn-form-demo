@@ -1,0 +1,3 @@
+build:
+  docker:
+    dyn-form: Dockerfile
