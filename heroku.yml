@@ -3,4 +3,6 @@ build:
     dyn-form: Dockerfile
 
 run:
-  web: java -jar jars/dyn-form.jar
+  command:
+      - java -jar jars/dyn-form.jar
+  image: dyn-form
