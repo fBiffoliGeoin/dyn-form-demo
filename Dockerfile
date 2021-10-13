@@ -3,7 +3,7 @@ FROM fabiobiffoli/dyn-form-fe as fe
 
 FROM fabiobiffoli/dyn-form-be-core as be
 WORKDIR /usr/src/app
-COPY pom.xml /usr/src/app/pom.xml
+COPY pom-heroku.xml /usr/src/app/pom.xml
 WORKDIR /usr/src/app/src/main/resources/static
 COPY --from=fe ./usr/share/nginx/html/ /usr/src/app/src/main/resources/static/
 WORKDIR /usr/src/app
