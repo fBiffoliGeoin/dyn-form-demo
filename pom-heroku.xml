@@ -16,28 +16,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
-	<profiles>
-		<profile>
-			<id>local</id>
-			<properties>
-				<activatedProperties>local</activatedProperties>
-			</properties>
-			<build>
-				<finalName>dyn-form-local</finalName>
-			</build>
-		</profile>
-		<profile>
-			<id>docker</id>
-			<properties>
-				<activatedProperties>docker</activatedProperties>
-			</properties>
-			<build>
-				<finalName>dyn-form-docker</finalName>
-				<!--finalName>${artifactId</finalName-->
-			</build>
-		</profile>
-	</profiles>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
