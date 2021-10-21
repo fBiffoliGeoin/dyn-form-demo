@@ -3,7 +3,7 @@ FROM fabiobiffoli/dyn-form-fe as fe
 
 FROM fabiobiffoli/dyn-form-core as be
 WORKDIR /usr/src/app
-COPY pom-heroku.xml /usr/src/app/pom.xml
+COPY pom.xml /usr/src/app/pom.xml
 RUN mvn -B dependency:resolve
 
 WORKDIR /usr/src/app/src/main/resources/static
