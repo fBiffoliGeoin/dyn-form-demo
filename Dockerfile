@@ -17,4 +17,4 @@ FROM adoptopenjdk:11-jre-hotspot
 EXPOSE 80
 WORKDIR /jars
 COPY --from=be /usr/src/app/target/*.jar jars/dyn-form.jar
-ENTRYPOINT ["java", "-jar", "jars/dyn-form.jar"]
+#ENTRYPOINT ["java", "-jar", "jars/dyn-form.jar"]
