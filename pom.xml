@@ -42,6 +42,10 @@
 	
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>dyn-form</groupId>
 			<artifactId>dyn-form-core</artifactId>
 			<version>1.0.0</version>
