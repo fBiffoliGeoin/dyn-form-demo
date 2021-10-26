@@ -16,6 +16,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.zaxxer.hikari.HikariDataSource;
+
 @Configuration
 public class DynFormDbConfiguration {
 	
@@ -33,6 +35,13 @@ public class DynFormDbConfiguration {
 		@ConfigurationProperties("dyn-form.datasource")
 		public DataSourceProperties dataSourceProperties() {
 			return new DataSourceProperties();
+		}
+
+		@ConfigurationProperties("dyn-form.datasource.configuration")
+		public DataSource dataSource(@Qualifier("dynFormDataSourceProperties") DataSourceProperties dynFormDataSourceProperties) {
+			return dynFormDataSourceProperties.initializeDataSourceBuilder()
+					.type(HikariDataSource.class)
+					.build();
 		}
 		
 		@Primary
