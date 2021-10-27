@@ -27,7 +27,6 @@ public class DynFormDbConfiguration {
 	public class dynFormConfig {
 		
 		@Primary
-		@Bean(name = "dynFormEntityManagerFactory")
 		public LocalContainerEntityManagerFactoryBean entityManagerFactory(
 				EntityManagerFactoryBuilder builder,
 				DataSource dynFormDataSource) {
