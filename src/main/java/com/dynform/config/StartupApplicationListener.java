@@ -11,7 +11,7 @@ import com.dynform.read_operations.core.EnvironmentService;
 import com.dynform.read_operations.core.ReadingService;
 import com.dynform.repository.ErrorsDetailRepository;
 import com.dynform.repository.ErrorsRepository;
-import com.dynform.repository.MenuRepository;
+import com.dynform.repository.IMenuRepository;
 import com.dynform.repository.MetadataRepository;
 import com.dynform.service.custom.CustomServiceMapper;
 
@@ -22,7 +22,7 @@ public class StartupApplicationListener implements
 	private EnvironmentService environmentService;
 	private ReadingService readingService;
 	private ModifyingService modifyingService;
-	private MenuRepository menuRepo;
+	private IMenuRepository menuRepo;
 	private MetadataRepository metadataRepository;
 	private DataSource dynFormDataSource;
 	private ErrorsRepository errorsRepo;
@@ -30,7 +30,7 @@ public class StartupApplicationListener implements
 	private CustomServiceMapper customServiceMapper;
  
     public StartupApplicationListener(EnvironmentService environmentService, ReadingService readingService, ModifyingService modifyingService,
-			MenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
+			IMenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
 			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper) {
     	
 		super();
