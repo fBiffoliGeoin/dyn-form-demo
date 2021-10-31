@@ -13,6 +13,7 @@ import com.dynform.read_operations.core.ReadingService;
 import com.dynform.repository.ErrorsDetailRepository;
 import com.dynform.repository.ErrorsRepository;
 import com.dynform.repository.IMenuRepository;
+import com.dynform.repository.MenuRepository;
 import com.dynform.repository.MetadataRepository;
 import com.dynform.service.custom.CustomServiceMapper;
 
@@ -32,7 +33,7 @@ public class StartupApplicationListener implements
 	private ReadingController readingController;
  
     public StartupApplicationListener(EnvironmentService environmentService, ReadingService readingService, ModifyingService modifyingService,
-			IMenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
+			MenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
 			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper,
 			ReadingController readingController) {
     	
