@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.dynform.entities.MenuTypesEntity;
 import com.dynform.model.Environment;
 import com.dynform.model.MainMenuItem;
 import com.dynform.model.MenuItem;
 
+@Repository
 public interface MenuRepository extends JpaRepository<MenuTypesEntity, Long>, IMenuRepository {
 		
 	String FIND_SELECT_ENVIRONMENT_QUERY = "select new com.dynform.model.Environment ("
