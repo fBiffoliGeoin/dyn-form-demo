@@ -1,4 +1,4 @@
-package com.dynform.config;
+package com.dynform.service;
 
 import java.io.InputStream;
 

@@ -7,6 +7,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.dynform.modify_operations.core.ModifyingService;
+import com.dynform.read_operations.ReadingController;
 import com.dynform.read_operations.core.EnvironmentService;
 import com.dynform.read_operations.core.ReadingService;
 import com.dynform.repository.ErrorsDetailRepository;
@@ -28,10 +29,12 @@ public class StartupApplicationListener implements
 	private ErrorsRepository errorsRepo;
 	private ErrorsDetailRepository errorsDetailRepo;
 	private CustomServiceMapper customServiceMapper;
+	private ReadingController readingController;
  
     public StartupApplicationListener(EnvironmentService environmentService, ReadingService readingService, ModifyingService modifyingService,
 			IMenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
-			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper) {
+			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper,
+			ReadingController readingController) {
     	
 		super();
 		
@@ -44,6 +47,7 @@ public class StartupApplicationListener implements
 		this.errorsRepo = errorsRepo;
 		this.errorsDetailRepo = errorsDetailRepo;
 		this.customServiceMapper = customServiceMapper;
+		this.readingController = readingController;
 	}
 
 
@@ -63,5 +67,6 @@ public class StartupApplicationListener implements
     			dynFormDataSource, customServiceMapper);
     	modifyingService.setConfiguration(this.menuRepo, metadataRepository,
     			dynFormDataSource, errorsRepo, errorsDetailRepo, customServiceMapper);
+    	readingController.setServices(readingService, environmentService);
     }
 }
