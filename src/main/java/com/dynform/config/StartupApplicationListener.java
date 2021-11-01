@@ -12,7 +12,6 @@ import com.dynform.read_operations.core.EnvironmentService;
 import com.dynform.read_operations.core.ReadingService;
 import com.dynform.repository.ErrorsDetailRepository;
 import com.dynform.repository.ErrorsRepository;
-import com.dynform.repository.IMenuRepository;
 import com.dynform.repository.MenuRepository;
 import com.dynform.repository.MetadataRepository;
 import com.dynform.service.custom.CustomServiceMapper;
@@ -24,7 +23,7 @@ public class StartupApplicationListener implements
 	private EnvironmentService environmentService;
 	private ReadingService readingService;
 	private ModifyingService modifyingService;
-	private IMenuRepository menuRepo;
+	private MenuRepository menuRepo;
 	private MetadataRepository metadataRepository;
 	private DataSource dynFormDataSource;
 	private ErrorsRepository errorsRepo;
