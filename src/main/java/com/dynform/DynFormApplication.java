@@ -17,7 +17,7 @@ public class DynFormApplication implements ApplicationRunner {
 	public DynFormApplication(EnvironmentService environmentService) {
 		this.environmentService= environmentService;
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(DynFormApplication.class, args);
 	}

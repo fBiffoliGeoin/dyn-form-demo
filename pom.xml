@@ -20,15 +20,6 @@
 	
 	<profiles>
 		<profile>
-			<id>local</id>
-			<properties>
-				<activatedProperties>local</activatedProperties>
-			</properties>
-			<build>
-				<finalName>dyn-form-local</finalName>
-			</build>
-		</profile>
-		<profile>
 			<id>docker</id>
 			<properties>
 				<activatedProperties>docker</activatedProperties>
@@ -55,22 +46,9 @@
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-		        <groupId>org.springframework.boot</groupId>
-		        <artifactId>spring-boot-maven-plugin</artifactId>
-		    </plugin>
-		</plugins>
-	</build>
 </project>

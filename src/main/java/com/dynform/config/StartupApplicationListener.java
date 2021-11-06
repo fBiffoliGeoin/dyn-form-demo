@@ -2,12 +2,12 @@ package com.dynform.config;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.dynform.modify_operations.core.ModifyingService;
-import com.dynform.read_operations.ReadingController;
 import com.dynform.read_operations.core.EnvironmentService;
 import com.dynform.read_operations.core.ReadingService;
 import com.dynform.repository.ErrorsDetailRepository;
@@ -20,7 +20,6 @@ import com.dynform.service.custom.CustomServiceMapper;
 public class StartupApplicationListener implements
   ApplicationListener<ContextRefreshedEvent> {
  
-	private EnvironmentService environmentService;
 	private ReadingService readingService;
 	private ModifyingService modifyingService;
 	private MenuRepository menuRepo;
@@ -29,16 +28,13 @@ public class StartupApplicationListener implements
 	private ErrorsRepository errorsRepo;
 	private ErrorsDetailRepository errorsDetailRepo;
 	private CustomServiceMapper customServiceMapper;
-	private ReadingController readingController;
+	private EnvironmentService environmentService;
  
-    public StartupApplicationListener(EnvironmentService environmentService, ReadingService readingService, ModifyingService modifyingService,
-			MenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
+    public StartupApplicationListener(ReadingService readingService, ModifyingService modifyingService,
+			MenuRepository menuRepo, MetadataRepository metadataRepository, @Qualifier("dynFormDataSource") DataSource dynFormDataSource,
 			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper,
-			ReadingController readingController) {
-    	
+			EnvironmentService environmentService) {
 		super();
-		
-		this.environmentService = environmentService;
 		this.readingService = readingService;
 		this.modifyingService = modifyingService;
 		this.menuRepo = menuRepo;
@@ -47,26 +43,16 @@ public class StartupApplicationListener implements
 		this.errorsRepo = errorsRepo;
 		this.errorsDetailRepo = errorsDetailRepo;
 		this.customServiceMapper = customServiceMapper;
-		this.readingController = readingController;
+		this.environmentService = environmentService;
 	}
 
 
 
 	@Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-		
-		environmentService.setConfiguration(menuRepo);
-		try {
-			environmentService.loadEnvironments();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
     	readingService.setConfiguration(menuRepo, metadataRepository,
-    			dynFormDataSource, customServiceMapper);
+    			dynFormDataSource, customServiceMapper, environmentService);
     	modifyingService.setConfiguration(this.menuRepo, metadataRepository,
-    			dynFormDataSource, errorsRepo, errorsDetailRepo, customServiceMapper);
-    	readingController.setServices(readingService, environmentService);
+    			dynFormDataSource, errorsRepo, errorsDetailRepo, customServiceMapper, environmentService);
     }
 }

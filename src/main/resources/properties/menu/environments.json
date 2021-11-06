@@ -46,6 +46,10 @@
 			{
 				"name": "code",
 				"label": "Code"
+			},
+			{
+				"name": "schema",
+				"label": "Schema"
 			}
 		]
 	}

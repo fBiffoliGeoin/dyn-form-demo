@@ -20,7 +20,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 public class DynFormDbConfiguration {
-	/*
+	
 	@Configuration
 	@EnableTransactionManagement
 	@EnableJpaRepositories(
@@ -64,5 +64,4 @@ public class DynFormDbConfiguration {
 			return new JpaTransactionManager(dynFormEntityManagerFactory);
 		}
 	}
-	*/
 }
