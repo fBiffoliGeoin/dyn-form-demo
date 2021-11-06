@@ -1,7 +1,7 @@
 FROM fabiobiffoli/dyn-form-fe as fe
 
 
-FROM fabiobiffoli/dyn-form-core:heroku as be
+FROM fabiobiffoli/dyn-form-core as be
 WORKDIR /usr/src/app
 COPY pom.xml /usr/src/app/pom.xml
 RUN mvn -B dependency:resolve
