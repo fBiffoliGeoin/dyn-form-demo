@@ -2,7 +2,6 @@ package com.dynform.config;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -31,7 +30,7 @@ public class StartupApplicationListener implements
 	private EnvironmentService environmentService;
  
     public StartupApplicationListener(ReadingService readingService, ModifyingService modifyingService,
-			MenuRepository menuRepo, MetadataRepository metadataRepository, @Qualifier("dynFormDataSource") DataSource dynFormDataSource,
+			MenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
 			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper,
 			EnvironmentService environmentService) {
 		super();
