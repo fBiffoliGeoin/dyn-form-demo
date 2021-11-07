@@ -95,6 +95,7 @@ CREATE TABLE if not exists menu.environments
   id serial NOT NULL,
   cust_id int not null,
   description varchar(255) NOT NULL,
+  schema varchar(100),
   code varchar(20) NOT NULL,
   CONSTRAINT env_pk PRIMARY KEY (id),
   CONSTRAINT env_fk1 FOREIGN KEY (cust_id)
