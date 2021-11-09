@@ -41,6 +41,7 @@ public class DynFormDbConfiguration {
 		@Bean(name = "dynFormDataSource")
 		@ConfigurationProperties("dyn-form.datasource.configuration")
 		public DataSource dataSource(@Qualifier("dynFormDataSourceProperties") DataSourceProperties dynFormDataSourceProperties) {
+			System.out.println("dbg010: " + System.getenv("JDBC_DATABASE_URL"));
 			return dynFormDataSourceProperties.initializeDataSourceBuilder()
 					.type(HikariDataSource.class)
 					.build();
