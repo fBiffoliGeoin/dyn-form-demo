@@ -24,6 +24,7 @@ public class DynFormApplication implements ApplicationRunner {
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		System.out.println("dbg010: " + System.getenv("JDBC_DATABASE_URL"));
 		environmentService.loadEnvironments();
 	}
 }
