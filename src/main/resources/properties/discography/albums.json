@@ -3,7 +3,7 @@
 		"table": {
 			"schema": "discography",
 			"name": "albums",
-			"ordering": "albums.title",
+			"ordering": "case when release_date is not null then to_char(release_date, 'yyyy') else cast(release_year as text) end, release_date",
 			"joins": [
 				{
 					"joinType": "INNER",
@@ -77,7 +77,8 @@
 				{
 					"name": "funct_release_date",
 					"function": "case when release_date is not null then to_char(release_date, 'yyyy') else cast(release_year as text) end",
-					"label": "Release year"
+					"label": "Release year",
+					"forceSearch": true
 				},
 				{
 					"name": "title",

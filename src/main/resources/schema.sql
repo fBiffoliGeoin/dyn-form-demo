@@ -76,7 +76,7 @@ CREATE TABLE if not exists errors.errors_detail
   id serial NOT NULL,
   error_id int not null,
   client_ip varchar(255),
-  dt_date date not null,
+  dt_date timestamp not null,
   CONSTRAINT err_detail_pk PRIMARY KEY (id),
   CONSTRAINT err_detail_fk1 FOREIGN KEY (error_id)
       REFERENCES errors.errors (id)
