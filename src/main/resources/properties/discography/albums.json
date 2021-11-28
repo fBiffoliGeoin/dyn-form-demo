@@ -1,5 +1,4 @@
 {
-		"customDb": "discography",
 		"loadImmediately": true,
 		"table": {
 			"schema": "discography",
