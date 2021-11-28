@@ -8,6 +8,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.dynform.modify_operations.core.ModifyingService;
+import com.dynform.read_operations.core.EnvironmentService;
 import com.dynform.read_operations.core.ReadingService;
 import com.dynform.repository.ErrorsDetailRepository;
 import com.dynform.repository.ErrorsRepository;
@@ -27,10 +28,12 @@ public class StartupApplicationListener implements
 	private ErrorsRepository errorsRepo;
 	private ErrorsDetailRepository errorsDetailRepo;
 	private CustomServiceMapper customServiceMapper;
+	private EnvironmentService environmentService;
  
     public StartupApplicationListener(ReadingService readingService, ModifyingService modifyingService,
-			MenuRepository menuRepo, MetadataRepository metadataRepository, DataSource dynFormDataSource,
-			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper) {
+			MenuRepository menuRepo, MetadataRepository metadataRepository, @Qualifier("dynFormDataSource") DataSource dynFormDataSource,
+			ErrorsRepository errorsRepo, ErrorsDetailRepository errorsDetailRepo, CustomServiceMapper customServiceMapper,
+			EnvironmentService environmentService) {
 		super();
 		this.readingService = readingService;
 		this.modifyingService = modifyingService;
@@ -40,6 +43,7 @@ public class StartupApplicationListener implements
 		this.errorsRepo = errorsRepo;
 		this.errorsDetailRepo = errorsDetailRepo;
 		this.customServiceMapper = customServiceMapper;
+		this.environmentService = environmentService;
 	}
 
 
@@ -47,8 +51,8 @@ public class StartupApplicationListener implements
 	@Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
     	readingService.setConfiguration(menuRepo, metadataRepository,
-    			dynFormDataSource, customServiceMapper);
+    			dynFormDataSource, customServiceMapper, environmentService);
     	modifyingService.setConfiguration(this.menuRepo, metadataRepository,
-    			dynFormDataSource, errorsRepo, errorsDetailRepo, customServiceMapper);
+    			dynFormDataSource, errorsRepo, errorsDetailRepo, customServiceMapper, environmentService);
     }
 }
