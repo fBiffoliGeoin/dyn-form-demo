@@ -52,7 +52,8 @@ public class StartupApplicationListener implements
     public void onApplicationEvent(ContextRefreshedEvent event) {
     	readingService.setConfiguration(menuRepo, metadataRepository,
     			dynFormDataSource, customServiceMapper, environmentService);
-    	modifyingService.setConfiguration(this.menuRepo, metadataRepository,
+    	modifyingService.setConfiguration(menuRepo, metadataRepository,
     			dynFormDataSource, errorsRepo, errorsDetailRepo, customServiceMapper, environmentService);
+    	environmentService.setConfiguration(menuRepo);
     }
 }
